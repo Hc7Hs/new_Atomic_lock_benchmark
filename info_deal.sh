@@ -6,9 +6,7 @@ socket_num=$(cat /proc/cpuinfo| grep 'physical id'| sort| uniq| wc -l)
 core_num=$(cat /proc/cpuinfo| grep 'core id'| sort| uniq| wc -l)
 proc_num=$(cat /proc/cpuinfo| grep 'processor'| sort| uniq| wc -l)
 ht_num=$(($proc_num/($core_num*$socket_num)))
-#echo $ht_num"\n"
-#info=$(cat /proc/cpuinfo | awk '/processor/{print}/physical id/{print}/core id/{print}'|  cut -d ":" -f2)
-#echo $info
+#k is a loop variable
 k=0
 for((i=0;i<$socket_num;i++))
 do
@@ -25,7 +23,6 @@ do
 			k=$(($k+1))
 		done
 done
-#echo $index
 printf "%d\n%d\n%d\n%d\n" $socket_num $core_num $proc_num $ht_num>out.txt 
 echo $index>>out.txt
 
