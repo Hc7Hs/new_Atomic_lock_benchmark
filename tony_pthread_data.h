@@ -22,9 +22,9 @@ struct thread_data
 
         pthread_t pthread;
 		
-		long padding;//padding struct into a block size.
+	long padding;//add a padding to avoid cache exchanging.
 		
-		int count;	//Add a single thread lock_count member variable. 	author:hh
+	int count;	//Add a single thread lock_count member variable. 	author:hh
 
 };
 
